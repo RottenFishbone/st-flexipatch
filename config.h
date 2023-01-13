@@ -130,6 +130,15 @@ const int boxdraw_braille = 0;
  */
 static int bellvolume = 0;
 
+#if VISUALBELL_2_PATCH
+static int vbelltimeout = 150;
+/* choose predefined visual-bell cells to inverse, or define your own logic */
+
+// #define VBCELL x==0 || x==right || y==0 || y==bottom  /* border */
+// #define VBCELL 1  /* all cells - whole screen */
+#define VBCELL y==bottom && x>right-2  /* bottom-right */
+#endif // VISUALBELL_2_PATCH
+
 /* default TERM value */
 char *termname = "st-256color";
 
